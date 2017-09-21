@@ -1,0 +1,8 @@
+prefix=/home/an/CarND/CarND-Capstone/ros/install
+
+Name: styx
+Description: Description of styx
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/an/CarND/CarND-Capstone/ros/install/lib 
+Requires: 
