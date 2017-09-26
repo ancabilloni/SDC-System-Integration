@@ -9,16 +9,12 @@ import math
 
 '''
 This node will publish waypoints from the car's current position to some `x` distance ahead.
-
 As mentioned in the doc, you should ideally first implement a version which does not care
 about traffic lights or obstacles.
-
 Once you have created dbw_node, you will update this node to use the status of traffic lights too.
-
 Please note that our simulator also provides the exact location of traffic lights and their
 current status in `/vehicle/traffic_lights` message. You can use this message to build this node
 as well as to verify your TL classifier.
-
 TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
@@ -28,6 +24,9 @@ LOOKAHEAD_WPS = 200 # Number of waypoints we will publish. You can change this n
 class WaypointUpdater(object):
     def __init__(self):
         rospy.init_node('waypoint_updater')
+
+        self.current_pos = None
+        self.roll = self.pitch = self.yaw = 0
 
         rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         # '/base_waypoints' repeatedly publishes a list of all waypoints for the track,
@@ -42,45 +41,44 @@ class WaypointUpdater(object):
         self.final_waypoints_pub = rospy.Publisher('final_waypoints', Lane, queue_size=1)
 
         # TODO: Add other member variables you need below
-        self.x = None
-        self.header = None
-        self.time = None
-        self.time = None
+
 
         rospy.spin()
 
     def pose_cb(self, msg):
         # TODO: Implement
-        # self.frame_id = msg.header.frame_id
-        # self.time = msg.header.stamp 
-        self.frame_id = msg.header
-        self.time = msg.header.stamp
-        self.x = msg.pose.position.x 
-        self.y = msg.pose.position.y 
-        self.z = msg.pose.position.z 
+
+        self.current_pos = msg.pos.position
+        orientation = msg.pose.orientation
 
         (self.roll, self.pitch, self.yaw) = tf.transformations.euler_from_quaternion(
-                [msg.pose.orientation.x, msg.pose.orientation.y,
-                    msg.pose.orientation.z, msg.pose.orientation.w])
+                [orientation.x, orientation.y, orientation.z, orientation.w])
 
     def waypoints_cb(self, waypoints):
         # TODO: Implement
-        print (waypoints.header.seq)
-        print (waypoints.header.stamp)
         waypoints_final = Lane()
-        waypoints_list = waypoints.waypoints
+        base_wp = waypoints.waypoints
 
-        i = 0
-        while True:
-            if (waypoints_list[i].pose.pose.position.x <= self.x):
-                print (waypoints_list[i].pose.pose.position.x)
-                i += 1
-            else:
-                break
-        waypoints_final.header.frame_id = '/world'
+        ## Find the closest waypoint ## 
+        distance = float('inf')
+        closest_wp = 0
+        for i in range(len(base_wp)):
+            wp_pos = base_wp[i].pose.pose.position 
+            dist = sqrt((wp_pos.x - self.current_pos.x)**2 + (wp_pos.y - self.current_pos.y)**2 + (wp_pos.z - self.current_pos.z)**2)
+            if (dist < distance):
+                distance = dist
+                closest_wp = i 
+
+        ## Test waypoint position ## 
+        heading = atan2((wp_pos.y - self.current_pos.y), (wp_pos.x - self.current_pos.x))
+        if abs(self.yaw - heading) > pi/4:
+            closest_wp += 1
+
+        ## Add heading waypoints ##
+        waypoints_final.header.frame_id = ' '
         waypoints_final.header.stamp = rospy.Time(0)
-        waypoints_final.waypoints = waypoints_list[i:LOOKAHEAD_WPS+1]
-        print(len(waypoints_final.waypoints))
+        waypoints_final.waypoints = base_wp[next_wp: (next_wp + LOOKAHEAD_WPS)]
+ 
         self.final_waypoints_pub.publish(waypoints_final)
         
 
