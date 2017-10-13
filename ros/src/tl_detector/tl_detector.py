@@ -13,7 +13,7 @@ import numpy as np
 import yaml
 from  tldetect import predictor
 STATE_COUNT_THRESHOLD = 1
-
+##DIS MADE BY Evotianus
 class TLDetector(object):
     def __init__(self):
         rospy.init_node('tl_detector')
