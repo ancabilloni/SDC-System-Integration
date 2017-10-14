@@ -9,14 +9,16 @@ from cv_bridge import CvBridge
 from light_classification.tl_classifier import TLClassifier
 import tf
 import cv2
+import numpy as np
 import yaml
-
-STATE_COUNT_THRESHOLD = 3
+from  tldetect import predictor
+STATE_COUNT_THRESHOLD = 1
 
 class TLDetector(object):
     def __init__(self):
         rospy.init_node('tl_detector')
-
+        p = predictor(modelpath="./FrozenSyam.pb")
+        self.predictor = p
         self.pose = None
         self.waypoints = None
         self.camera_image = None
@@ -70,8 +72,27 @@ class TLDetector(object):
         """
         self.has_image = True
         self.camera_image = msg
+        
         light_wp, state = self.process_traffic_lights()
+        cv_image = self.bridge.imgmsg_to_cv2(msg)
+        # cv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB)
+        import uuid
 
+        unique_filename = str(uuid.uuid4())
+        
+        
+        # mesage = "Pred = {} score = {}".format(str(pred),str(1.0))
+        # rospy.logwarn(mesage)
+        # cv2.imwrite("/home/evotianus/CarND-Capstone/temprun/{}.png".format(unique_filename),np.array(cv_image))
+        (pred,skores) = self.predictor.predict(cv_image)
+        # img.save("/home/evotianus/CarND-Capstone/temprun/{}.png".format(str(pred)))
+        # cv2.imwrite("/home/evotianus/CarND-Capstone/temprun/{}.png".format(unique_filename),(img))
+        mesage = "Pred = {} score = {}".format(str(pred),str(skores))
+        rospy.logwarn(mesage)
+        # try:
+        #     pred = pred[0]
+        # except:
+        #     pred = 4
         '''
         Publish upcoming red lights at camera frequency.
         Each predicted state has to occur `STATE_COUNT_THRESHOLD` number
@@ -85,7 +106,19 @@ class TLDetector(object):
             self.last_state = self.state
             light_wp = light_wp if state == TrafficLight.RED else -1
             self.last_wp = light_wp
-            self.upcoming_red_light_pub.publish(Int32(light_wp))
+            # pred = pred.lower()
+            if(1 in pred):
+                # pred = 1
+                self.upcoming_red_light_pub.publish(Int32(TrafficLight.RED))
+            if(3 in pred):
+                # pred = 0
+                self.upcoming_red_light_pub.publish(Int32(TrafficLight.GREEN))
+            if(2 in pred):
+                self.upcoming_red_light_pub.publish(Int32(TrafficLight.YELLOW))
+            if(len(pred)==0):
+                self.upcoming_red_light_pub.publish(Int32(TrafficLight.UNKNOWN))
+
+
         else:
             self.upcoming_red_light_pub.publish(Int32(self.last_wp))
         self.state_count += 1
