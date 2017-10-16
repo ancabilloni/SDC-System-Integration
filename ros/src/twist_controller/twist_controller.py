@@ -11,6 +11,8 @@ PREDICTIVE_STEERING = 1.0  # from 0.0 to 1.0
 
 class Controller(object):
     """
+    CONTROL SUBSYSTEM
+
     *** STEP 4 ***
 
     Adjusts vehicles steering to minimise Cross Track Error and align to predicted path.
@@ -73,14 +75,14 @@ class Controller(object):
         See Torque - https://en.wikipedia.org/wiki/Torque
         """
         velocity_change_required = target_linear_velocity - current_velocity
-        rospy.logwarn("-----")
-        rospy.logwarn("velocity_change_required %s = target_linear_velocity %s - current_velocity %s", velocity_change_required, target_linear_velocity, current_velocity)
+        #rospy.logwarn("-----")
+        #rospy.logwarn("velocity_change_required %s = target_linear_velocity %s - current_velocity %s", velocity_change_required, target_linear_velocity, current_velocity)
         # adjust acceleration within timebox
         acceleration = velocity_change_required / transition_time
-        rospy.logwarn("acceleration %s = velocity_change_required %s / transition_time %s", acceleration, velocity_change_required, transition_time)
+        #rospy.logwarn("acceleration %s = velocity_change_required %s / transition_time %s", acceleration, velocity_change_required, transition_time)
         # check torque, where torque is vehicle mass * acceleration * (wheel radius, includes tire)
         torque = vehicle_mass * acceleration * wheel_and_tire_radius
-        rospy.logwarn("torque %s = vehicle_mass %s * acceleration %s * wheel_and_tire_radius %s", torque, vehicle_mass, acceleration, wheel_and_tire_radius)
+        #rospy.logwarn("torque %s = vehicle_mass %s * acceleration %s * wheel_and_tire_radius %s", torque, vehicle_mass, acceleration, wheel_and_tire_radius)
 
         throttle, brake = 0, 0
         if torque > 0:
@@ -90,8 +92,8 @@ class Controller(object):
 
         return throttle, brake
 
-    def control_speed_based_on_proportional_throttle_brake(self, target_linear_velocity, current_velocity,
-                                                           max_throttle_proportional, max_brake_proportional):
+    def control_velocity_based_on_proportional_throttle_brake(self, target_linear_velocity, current_velocity,
+                                                              max_throttle_proportional, max_brake_proportional):
         """
         Manipulates throttle, brake based on difference between target and current linear velocity,
         limited by dbw_node parameters max_throttle_proportion and max_brake_proportional.
@@ -106,12 +108,12 @@ class Controller(object):
         if velocity_change_required > 0.1:
             # limit increase in throttle
             throttle, brake = min(velocity_change_required / target_linear_velocity, max_throttle_proportional), 0.0
-            rospy.logwarn("increase throttle : throttle %s = max(velocity_change_required %s / target_linear_velocity %s, max_throttle_proportion %s)",
+            rospy.logwarn("increase throttle : throttle %s = min(velocity_change_required %s / target_linear_velocity %s, max_throttle_proportion %s)",
                           throttle, velocity_change_required, target_linear_velocity, max_throttle_proportional)
         elif velocity_change_required < -0.1:
             # limit increase in brake
             throttle, brake = 0.0, min(velocity_change_required / target_linear_velocity, max_brake_proportional)
-            rospy.logwarn("increase brake : brake %s = max(velocity_change_required %s / target_linear_velocity %s, max_brake_proportion %s)",
-                          throttle, velocity_change_required, target_linear_velocity, max_brake_proportional)
+            rospy.logwarn("increase brake : brake %s = min(velocity_change_required %s / target_linear_velocity %s, max_brake_proportion %s)",
+                          brake, velocity_change_required, target_linear_velocity, max_brake_proportional)
 
         return throttle, brake
