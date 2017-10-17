@@ -127,8 +127,12 @@ class TLDetector(object):
             if eucliddist < nearest_tl:
                 nearest_tl = eucliddist
                 light_stop_wp = self.get_closest_waypoint(light_stop_pose)
-        if(nearest_tl<float(6.0)):
-            self.upcoming_red_light_pub.publish(Int32(light_stop_wp))
+        if(nearest_tl<float(10.0)):
+            #Means if it is green or yellow
+            if(3 in pred or 2 in pred):
+                self.upcoming_red_light_pub.publish(Int32(-1))
+            else:
+                self.upcoming_red_light_pub.publish(Int32(light_stop_wp))
             rospy.logwarn("Dude I am publishing this TL with ID: ({}) to the publisher ".format(str(light_stop_wp)))
         rospy.logwarn("Distance to nearest TL is around {} m ".format(str(nearest_tl)))
         # distance_to_nearest = None
