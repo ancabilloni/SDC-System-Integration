@@ -12,8 +12,6 @@ import numpy as np
 
 from twist_controller import Controller
 
-POINTS_TO_FIT = 10
-
 '''
 You can build this node only after you have built (or partially built) the `waypoint_updater` node.
 
@@ -36,6 +34,8 @@ Once you have the proposed throttle, brake, and steer values, publish it on the 
 that we have created in the `__init__` function.
 
 '''
+
+POINTS_TO_FIT = 10
 
 
 class DBWNode(object):
@@ -145,8 +145,8 @@ class DBWNode(object):
                 self.publish(throttle, brake, steer)
                 rospy.loginfo("published throttle : %s, brake : %s, steer : %s", throttle, brake, steer)
 
-            # rospy.logwarn("dbw_node.py : throttle %s, brake %s, steer %s adjustments to dbw_node",
-            #               throttle, brake, steer)
+            #rospy.logwarn("throttle %s, brake %s, steer %s adjustments by dbw_node",
+            #              throttle, brake, steer)
 
             rate.sleep()
 

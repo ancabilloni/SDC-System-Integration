@@ -15,10 +15,10 @@
 ---
 
 ### Submission Checklist and Requirements
-1. Smoothly follow waypoints in the simulator.
-1. Stop at traffic lights when needed.
-1. Stop and restart PID controllers depending on the state of /vehicle/dbw_enabled.
-1. **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
+1. - [x] Smoothly follow waypoints in the simulator.
+1. - [ ] Stop at traffic lights when needed.
+1. - [x] Stop and restart PID controllers depending on the state of /vehicle/dbw_enabled.
+1. - [ ] **Speed Limit**: Be sure to respect the speed limit set by the velocity param (km/h) in waypoint_loader
 
 ---
 
@@ -77,6 +77,17 @@ catkin_make
 source devel/setup.sh
 roslaunch launch/styx.launch
 ```
+3.1 OPTIONAL : Generate and view Sphinx API /doc workflow
+```bash
+cd <cloned_folder>/ros/src/doc
+vim conf.py
+vim index.rst
+make clean
+make html
+cd _build/html/
+python -m SimpleHTTPServer
+```
+
 4. Run the simulator
 
 ### Real world testing

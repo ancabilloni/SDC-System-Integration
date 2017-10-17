@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
+
 from tf import transformations
 from geometry_msgs.msg import PoseStamped
 from styx_msgs.msg import Lane, Waypoint, TrafficLightArray
@@ -35,12 +36,13 @@ class WaypointUpdater(object):
     This node will publish waypoints from the car's current position to some `x` distance ahead,
     with the correct target velocities, depending on traffic lights and obstacles.
     """
+
     def __init__(self):
         rospy.init_node('waypoint_updater')
 
         # Subscribers
-        rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
-        rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
+        rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb, queue_size=1)
+        rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb, queue_size=1)
 
         # TODO: Add a subscriber for /traffic_waypoint and /obstacle_waypoint below
         rospy.Subscriber('vehicle/traffic_lights', TrafficLightArray, self.traffic_lights_cb)  # Simulator data

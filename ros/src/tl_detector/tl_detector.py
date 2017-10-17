@@ -13,9 +13,23 @@ import math
 import numpy as np
 import yaml
 from  tldetect import predictor
+
 STATE_COUNT_THRESHOLD = 1
 
+
 class TLDetector(object):
+    """
+    PERCEPTION SUBSYSTEM
+
+    To build and train traffic light detection / classification ...
+
+    1. Get and label training data into Pascal VOC format
+    2. Generate TF record
+    3. Feed record to object detection API TF
+    4. Train
+    5. Freeze weight once suitable error level reached
+    6. Done
+    """
     def __init__(self):
         rospy.init_node('tl_detector')
         p = predictor(modelpath="./FrozenSyam.pb")
@@ -90,16 +104,16 @@ class TLDetector(object):
         
         # light_wp, state = self.process_traffic_lights()
         cv_image = self.bridge.imgmsg_to_cv2(msg)
+        # rospy.logwarn("cv_image : %s", cv_image)
         # cv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB)
         import uuid
 
         unique_filename = str(uuid.uuid4())
-        
-        
+
         # mesage = "Pred = {} score = {}".format(str(pred),str(1.0))
         # rospy.logwarn(mesage)
         # cv2.imwrite("/home/evotianus/CarND-Capstone/temprun/{}.png".format(unique_filename),np.array(cv_image))
-        (pred,skores) = self.predictor.predict(cv_image)
+        (pred, skores) = self.predictor.predict(cv_image)
         # img.save("/home/evotianus/CarND-Capstone/temprun/{}.png".format(str(pred)))
         # cv2.imwrite("/home/evotianus/CarND-Capstone/temprun/{}.png".format(unique_filename),(img))
         # mesage = "Pred = {} score = {}".format(str(pred),str(skores))
@@ -219,7 +233,7 @@ class TLDetector(object):
         except (tf.Exception, tf.LookupException, tf.ConnectivityException):
             rospy.logerr("Failed to find camera to map transform")
 
-        #TODO Use tranform and rotation to calculate 2D position of light in image
+        # TODO Use tranform and rotation to calculate 2D position of light in image
 
         x = 0
         y = 0
@@ -236,7 +250,7 @@ class TLDetector(object):
             int: ID of traffic light color (specified in styx_msgs/TrafficLight)
 
         """
-        if(not self.has_image):
+        if (not self.has_image):
             self.prev_light_loc = None
             return False
 
@@ -245,9 +259,9 @@ class TLDetector(object):
 
         x, y = self.project_to_image_plane(light.pose.pose.position)
 
-        #TODO use light location to zoom in on traffic light in image
+        # TODO use light location to zoom in on traffic light in image
 
-        #Get classification
+        # Get classification
         return self.light_classifier.get_classification(cv_image)
 
     def process_traffic_lights(self):
@@ -261,16 +275,17 @@ class TLDetector(object):
         """
         light = None
         light_positions = self.config['light_positions']
-        if(self.pose):
+        if (self.pose):
             car_position = self.get_closest_waypoint(self.pose.pose)
 
-        #TODO find the closest visible traffic light (if one exists)
+        # TODO find the closest visible traffic light (if one exists)
 
         if light:
             state = self.get_light_state(light)
             return light_wp, state
         self.waypoints = None
         return -1, TrafficLight.UNKNOWN
+
 
 if __name__ == '__main__':
     try:
