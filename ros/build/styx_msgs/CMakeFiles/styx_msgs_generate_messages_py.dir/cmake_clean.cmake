@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/styx_msgs_generate_messages_py"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_Lane.py"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_TrafficLightArray.py"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_TrafficLight.py"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_Waypoint.py"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/__init__.py"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_Lane.py"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_TrafficLight.py"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_Waypoint.py"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/_TrafficLightArray.py"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/python2.7/dist-packages/styx_msgs/msg/__init__.py"
 )
 
 # Per-language clean rules from dependency scanning.

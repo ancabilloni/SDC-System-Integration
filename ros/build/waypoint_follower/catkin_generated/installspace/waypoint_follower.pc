@@ -1,8 +1,8 @@
-prefix=/home/an/CarND/CarND-Capstone/ros/install
+prefix=/home/evotianus/Autonomous_System_Integration/ros/install
 
 Name: waypoint_follower
 Description: Description of waypoint_follower
 Version: 0.0.0
-Cflags: -I/home/an/CarND/CarND-Capstone/ros/install/include
-Libs: -L/home/an/CarND/CarND-Capstone/ros/install/lib -llibwaypoint_follower
+Cflags: -I/home/evotianus/Autonomous_System_Integration/ros/install/include
+Libs: -L/home/evotianus/Autonomous_System_Integration/ros/install/lib -llibwaypoint_follower
 Requires: roscpp std_msgs tf geometry_msgs styx_msgs

@@ -7,8 +7,8 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/an/CarND/CarND-Capstone/ros/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/an/CarND/CarND-Capstone/ros/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/an/CarND/CarND-Capstone/ros/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD="/home/an/CarND/CarND-Capstone/ros/build"
-export ROS_PACKAGE_PATH="/home/an/CarND/CarND-Capstone/ros/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/evotianus/Autonomous_System_Integration/ros/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/opt/ros/kinetic/lib:/home/evotianus/torch/install/lib:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+export PWD="/home/evotianus/Autonomous_System_Integration/ros/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/evotianus/Autonomous_System_Integration/ros/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/evotianus/Autonomous_System_Integration/ros/src:$ROS_PACKAGE_PATH"

@@ -71,6 +71,8 @@ python -m pip install pygame moviepy
 3. Make and run styx
 ```bash
 cd ros
+rm -rf build
+rm -rf devel
 catkin_make
 source devel/setup.sh
 roslaunch launch/styx.launch

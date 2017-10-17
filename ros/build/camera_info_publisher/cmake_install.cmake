@@ -1,8 +1,8 @@
-# Install script for directory: /home/an/CarND/CarND-Capstone/ros/src/camera_info_publisher
+# Install script for directory: /home/evotianus/Autonomous_System_Integration/ros/src/camera_info_publisher
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/an/CarND/CarND-Capstone/ros/install")
+  set(CMAKE_INSTALL_PREFIX "/home/evotianus/Autonomous_System_Integration/ros/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/an/CarND/CarND-Capstone/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisher.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/evotianus/Autonomous_System_Integration/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisher.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/camera_info_publisher/cmake" TYPE FILE FILES
-    "/home/an/CarND/CarND-Capstone/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig.cmake"
-    "/home/an/CarND/CarND-Capstone/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig-version.cmake"
+    "/home/evotianus/Autonomous_System_Integration/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig.cmake"
+    "/home/evotianus/Autonomous_System_Integration/ros/build/camera_info_publisher/catkin_generated/installspace/camera_info_publisherConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/camera_info_publisher" TYPE FILE FILES "/home/an/CarND/CarND-Capstone/ros/src/camera_info_publisher/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/camera_info_publisher" TYPE FILE FILES "/home/evotianus/Autonomous_System_Integration/ros/src/camera_info_publisher/package.xml")
 endif()
 

@@ -1,8 +1,8 @@
-prefix=/home/an/CarND/CarND-Capstone/ros/devel
+prefix=/home/evotianus/Autonomous_System_Integration/ros/devel
 
 Name: tl_detector
 Description: Description of tl_detector
 Version: 0.0.0
 Cflags: 
-Libs: -L/home/an/CarND/CarND-Capstone/ros/devel/lib 
+Libs: -L/home/evotianus/Autonomous_System_Integration/ros/devel/lib 
 Requires: 

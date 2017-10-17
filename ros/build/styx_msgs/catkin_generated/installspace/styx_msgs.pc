@@ -1,8 +1,8 @@
-prefix=/home/an/CarND/CarND-Capstone/ros/install
+prefix=/home/evotianus/Autonomous_System_Integration/ros/install
 
 Name: styx_msgs
 Description: Description of styx_msgs
 Version: 0.0.0
-Cflags: -I/home/an/CarND/CarND-Capstone/ros/install/include
-Libs: -L/home/an/CarND/CarND-Capstone/ros/install/lib 
+Cflags: -I/home/evotianus/Autonomous_System_Integration/ros/install/include
+Libs: -L/home/evotianus/Autonomous_System_Integration/ros/install/lib 
 Requires: 

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/pure_pursuit.dir/src/pure_pursuit.cpp.o"
   "CMakeFiles/pure_pursuit.dir/src/pure_pursuit_core.cpp.o"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/waypoint_follower/pure_pursuit.pdb"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/waypoint_follower/pure_pursuit"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/waypoint_follower/pure_pursuit.pdb"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/waypoint_follower/pure_pursuit"
 )
 
 # Per-language clean rules from dependency scanning.

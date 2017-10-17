@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/styx_msgs_generate_messages_eus"
-  "/home/an/CarND/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l"
-  "/home/an/CarND/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l"
-  "/home/an/CarND/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l"
-  "/home/an/CarND/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l"
-  "/home/an/CarND/CarND-Capstone/ros/devel/share/roseus/ros/styx_msgs/manifest.l"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/share/roseus/ros/styx_msgs/msg/Lane.l"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLight.l"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/share/roseus/ros/styx_msgs/msg/Waypoint.l"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/share/roseus/ros/styx_msgs/msg/TrafficLightArray.l"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/share/roseus/ros/styx_msgs/manifest.l"
 )
 
 # Per-language clean rules from dependency scanning.

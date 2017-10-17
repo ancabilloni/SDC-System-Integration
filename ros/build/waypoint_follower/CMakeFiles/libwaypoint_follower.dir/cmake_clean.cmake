@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/libwaypoint_follower.dir/lib/libwaypoint_follower.cpp.o"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/liblibwaypoint_follower.pdb"
-  "/home/an/CarND/CarND-Capstone/ros/devel/lib/liblibwaypoint_follower.so"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/liblibwaypoint_follower.pdb"
+  "/home/evotianus/Autonomous_System_Integration/ros/devel/lib/liblibwaypoint_follower.so"
 )
 
 # Per-language clean rules from dependency scanning.

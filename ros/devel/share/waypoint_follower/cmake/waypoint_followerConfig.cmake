@@ -67,14 +67,14 @@ set(waypoint_follower_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(waypoint_follower_SOURCE_PREFIX /home/an/CarND/CarND-Capstone/ros/src/waypoint_follower)
-  set(waypoint_follower_DEVEL_PREFIX /home/an/CarND/CarND-Capstone/ros/devel)
+  set(waypoint_follower_SOURCE_PREFIX /home/evotianus/Autonomous_System_Integration/ros/src/waypoint_follower)
+  set(waypoint_follower_DEVEL_PREFIX /home/evotianus/Autonomous_System_Integration/ros/devel)
   set(waypoint_follower_INSTALL_PREFIX "")
   set(waypoint_follower_PREFIX ${waypoint_follower_DEVEL_PREFIX})
 else()
   set(waypoint_follower_SOURCE_PREFIX "")
   set(waypoint_follower_DEVEL_PREFIX "")
-  set(waypoint_follower_INSTALL_PREFIX /home/an/CarND/CarND-Capstone/ros/install)
+  set(waypoint_follower_INSTALL_PREFIX /home/evotianus/Autonomous_System_Integration/ros/install)
   set(waypoint_follower_PREFIX ${waypoint_follower_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(waypoint_follower_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/an/CarND/CarND-Capstone/ros/src/waypoint_follower/include " STREQUAL " ")
+if(NOT "/home/evotianus/Autonomous_System_Integration/ros/src/waypoint_follower/include " STREQUAL " ")
   set(waypoint_follower_INCLUDE_DIRS "")
-  set(_include_dirs "/home/an/CarND/CarND-Capstone/ros/src/waypoint_follower/include")
+  set(_include_dirs "/home/evotianus/Autonomous_System_Integration/ros/src/waypoint_follower/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -103,7 +103,7 @@ if(NOT "/home/an/CarND/CarND-Capstone/ros/src/waypoint_follower/include " STREQU
         message(FATAL_ERROR "Project 'waypoint_follower' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  Ask the maintainer 'yousuf <yousuf@todo.todo>' to fix it.")
       endif()
     else()
-      message(FATAL_ERROR "Project 'waypoint_follower' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/an/CarND/CarND-Capstone/ros/src/waypoint_follower/${idir}'.  Ask the maintainer 'yousuf <yousuf@todo.todo>' to fix it.")
+      message(FATAL_ERROR "Project 'waypoint_follower' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/evotianus/Autonomous_System_Integration/ros/src/waypoint_follower/${idir}'.  Ask the maintainer 'yousuf <yousuf@todo.todo>' to fix it.")
     endif()
     _list_append_unique(waypoint_follower_INCLUDE_DIRS ${include})
   endforeach()
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/an/CarND/CarND-Capstone/ros/devel/lib;/home/an/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/evotianus/Autonomous_System_Integration/ros/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

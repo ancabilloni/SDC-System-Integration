@@ -145,8 +145,8 @@ class DBWNode(object):
                 self.publish(throttle, brake, steer)
                 rospy.loginfo("published throttle : %s, brake : %s, steer : %s", throttle, brake, steer)
 
-            rospy.logwarn("dbw_node.py : throttle %s, brake %s, steer %s adjustments to dbw_node",
-                          throttle, brake, steer)
+            # rospy.logwarn("dbw_node.py : throttle %s, brake %s, steer %s adjustments to dbw_node",
+            #               throttle, brake, steer)
 
             rate.sleep()
 
