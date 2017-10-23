@@ -1,8 +1,0 @@
-prefix=/home/evotianus/Autonomous_System_Integration/ros/install
-
-Name: styx
-Description: Description of styx
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/evotianus/Autonomous_System_Integration/ros/install/lib 
-Requires: 
