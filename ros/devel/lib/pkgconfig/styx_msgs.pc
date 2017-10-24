@@ -1,0 +1,8 @@
+prefix=/home/evotianus/Autonomous_System_Integration/ros/devel
+
+Name: styx_msgs
+Description: Description of styx_msgs
+Version: 0.0.0
+Cflags: -I/home/evotianus/Autonomous_System_Integration/ros/devel/include
+Libs: -L/home/evotianus/Autonomous_System_Integration/ros/devel/lib 
+Requires: 

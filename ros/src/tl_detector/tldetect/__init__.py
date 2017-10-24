@@ -5,8 +5,8 @@ import tensorflow as tf
 from styx_msgs.msg import TrafficLight
 import rospy
 import time
-
-
+from helper import colorz
+from PIL import Image
 class predictor(object):
     def __init__(self, modelpath="./FrozenSyam.pb"):
         """ Loads the default model if none specficied. """
@@ -60,13 +60,15 @@ class predictor(object):
                 skores.append(score)
 
         # RED, YELLOW, GREEN = 1, 2, 3
+        #returns PRED COLOR top RGB color detected from Image
+        color_helpers = helper.colorz(Image.fromarray(image_np))
 
         light = TrafficLight.UNKNOWN
-        if (3 in pred):
+        if (3 in pred and color_helpers == "GREEN"):
             light = TrafficLight.GREEN
-        elif (2 in pred):
+        elif (2 in pred and color_helpers == "YELLOW"):
             light = TrafficLight.YELLOW
         else:
             light = TrafficLight.RED
 
-        return light
+        return 

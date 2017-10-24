@@ -156,6 +156,7 @@ class TLDetector(object):
 
         start = time.time()
         light = self.predictor.predict(cv_image)
+        rospy.logwarn(light)
         end = time.time()
         self.time = end - start
 
