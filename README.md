@@ -18,6 +18,9 @@
 ---
 
 ### RoboFolks Documentation
+
+Project Introduction: ![presentation](https://docs.google.com/presentation/d/13xbwB789J7PuLtkmzdOygla4M4J5GBxbD6bkOSd4STs/edit?usp=sharing)
+
 0. High level architecture from course lesson
 ![high level architecture](./imgs/high_level_architecture.png)
 
