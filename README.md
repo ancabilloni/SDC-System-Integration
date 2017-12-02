@@ -7,13 +7,13 @@
 
 ### RoboFolks Team
 1. #### Perception
-    * evotianusx@gmail.com 
+    * Evotianus Benedicto: evotianusx@gmail.com (Deep Learning Lead)
     * rohts.patil@gmail.com
 1. #### Planning
-    * anguyen3@rockets.utoledo.edu
+    * An Nguyen: anguyen3@rockets.utoledo.edu (RoboFolks Team Lead)
 1. #### Control 
-    * andrew.d.wilkie@gmail.com
-    * buaaluqiang@hotmail.com
+    * Andrew Wilkie: andrew.d.wilkie@gmail.com (Control & Document Lead)
+    * Quiang Lu: buaaluqiang@hotmail.com
 
 ---
 
