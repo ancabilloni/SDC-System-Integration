@@ -8,7 +8,7 @@
 ### RoboFolks Team
 1. #### Perception
     * Evotianus Benedicto: evotianusx@gmail.com (Deep Learning Lead)
-    * rohts.patil@gmail.com
+    * Rohit Patil: rohts.patil@gmail.com
 1. #### Planning
     * An Nguyen: anguyen3@rockets.utoledo.edu (RoboFolks Team Lead)
 1. #### Control 
